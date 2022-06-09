@@ -1,0 +1,39 @@
+﻿<Application x:Class="amogus.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:amogus"
+             xmlns:viewModel="clr-namespace:amogus.MVVM.ViewModel"
+             xmlns:view="clr-namespace:amogus.MVVM.View"
+             StartupUri="MainWindow.xaml">
+    <Application.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Themes/MenuButton.xaml"/>
+                <ResourceDictionary Source="Themes/TextBox.xaml"/>
+                <ResourceDictionary Source="Themes/OpenFileDialogTheme.xaml"/>
+                <ResourceDictionary Source="Themes/CooltextBox.xaml"/>
+                <ResourceDictionary Source="Themes/ButtonTheme.xaml"/>
+                <ResourceDictionary Source="Themes/TransitButtonTheme.xaml"/>
+                <ResourceDictionary Source="Themes/MenuTheme.xaml"/>
+                <ResourceDictionary Source="Themes/HomeBorderTheme.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+
+            <DataTemplate DataType="{x:Type viewModel:HomeViewModel}">
+                <view:Home/>
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type viewModel:InputViewModel}">
+                <view:Input/>
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type viewModel:DataExcelViewModel}">
+                <view:ColumnsNRows/>
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type viewModel:RatioViewModel}">
+                <view:Ratio/>
+            </DataTemplate>
+
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>

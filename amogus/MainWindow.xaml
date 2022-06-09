@@ -1,0 +1,113 @@
+﻿<Window x:Class="amogus.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:amogus"
+        xmlns:viewModel="clr-namespace:amogus.MVVM.ViewModel"
+        xmlns:view="clr-namespace:amogus.MVVM.View"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="600" Width="1260"
+        Background="Transparent">
+
+    <Window.DataContext>
+        <viewModel:MainViewModel/>
+    </Window.DataContext>
+
+    <Border Background="#3D3D3D" RenderTransformOrigin="0.491,0.48">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="220"></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition Width="{Binding customHeight, Mode=TwoWay}"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="60"></RowDefinition>
+                <RowDefinition></RowDefinition>
+
+            </Grid.RowDefinitions>
+
+            <StackPanel Grid.Row="0" Grid.Column="0" Background="#2E2E2E"/>
+
+            <TextBlock Text="GEPars"
+                       VerticalAlignment="Center"
+                       HorizontalAlignment="Left"
+                       Foreground="White"
+                       FontSize="27"
+                       Margin="25,0,0,0"/>
+
+            <StackPanel Grid.Row="1" Background="#2E2E2E">
+
+                <RadioButton Content="Меню"
+                             Height="55"
+                             Foreground="White"
+                             FontSize="18"
+                             Style="{StaticResource MenuButtonTheme}"
+                             Command="{Binding homeViewCommand}"/>
+                <RadioButton Content="Настройки"
+                             Height="55"
+                             Foreground="White"
+                             FontSize="18"
+                             Style="{StaticResource MenuButtonTheme}"
+                             Command="{Binding homeViewCommand}"/>
+                <RadioButton Content="Экспорт"
+                             Height="55"
+                             Foreground="White"
+                             FontSize="18"
+                             Style="{StaticResource MenuButtonTheme}"
+                             Command="{Binding homeViewCommand}"/>
+            </StackPanel>
+
+            <ContentControl Grid.Row="1"
+                            Grid.Column="1"
+                            Margin="10"
+                            Content="{Binding CurrentView}"/>
+
+            <DockPanel Grid.Column="2" Grid.Row="0">
+                <Border DockPanel.Dock="Top"
+                        Background="#2E2E2E">
+                    <ToggleButton Width="40"
+                                  Height="40"
+                                  Background="#2E2E2E"
+                                  HorizontalAlignment="Left"
+                                  VerticalAlignment="Center"
+                                  BorderThickness="0"
+                                  Margin="10,0,0,0"
+                                  Style="{StaticResource MenuTheme}"
+                                  Command="{Binding changeHeight}">
+
+                        Click="OpenDialogButton_Click">
+                        
+                        <ToggleButton.Clip>
+                            <RectangleGeometry RadiusX="5"
+                                       RadiusY="5"
+                                       Rect="0,0,40,40"/>
+                        </ToggleButton.Clip>
+                    </ToggleButton>
+                </Border>
+            </DockPanel>
+
+            <DockPanel Grid.Column="2" Grid.Row="1">
+                <Border DockPanel.Dock="Top"
+                        Background="#2E2E2E">
+                    <ScrollViewer Height="auto" VerticalScrollBarVisibility="Auto" Visibility="{Binding isVisible, Mode=TwoWay}">
+                        <TextBlock Margin="10"
+                               FontSize="14"
+                               Foreground="White"
+                               ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                               ScrollViewer.VerticalScrollBarVisibility="Auto"
+                               ScrollViewer.CanContentScroll="True"
+                               TextWrapping="Wrap"
+                               Visibility="{Binding isVisible, Mode=TwoWay}"
+                               Text="{Binding addedText}"/>
+
+                    </ScrollViewer>
+
+                </Border>
+            </DockPanel>
+
+        </Grid>
+
+    </Border>
+</Window>

@@ -1,0 +1,124 @@
+﻿<UserControl x:Class="amogus.MVVM.View.Input"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:amogus.MVVM.View"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+
+    <StackPanel>
+        <DockPanel>
+            <TextBlock Text="Input .XLSX"
+                   Foreground="White"
+                   FontSize="28"
+                   HorizontalAlignment="Left"
+                   Margin="0,0,0,20"/>
+
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <ToggleButton Width="30"
+                          Height="30"
+                          Background="Green"
+                          BorderBrush="#2E2E2E"
+                          BorderThickness="0,5"
+                          Style="{StaticResource TransitButton}"
+                          Margin="0,-13,0,0"
+                          ToolTip="Input .XLSX"/>
+                <Border Width="20"
+                    Height="3"
+                    Background="#2E2E2E"
+                    Margin="0,-13,0,0"/>
+                <ToggleButton Width="30"
+                          Height="30"
+                          Background="#2E2E2E"
+                          Style="{StaticResource TransitButton}"
+                          Margin="0,-13,0,0"
+                          Command="{Binding DataContext.getDataExcelViewModel, RelativeSource={RelativeSource AncestorType=Window}}"
+                          ToolTip="Select fields"/>
+                <Border Width="20"
+                    Height="3"
+                    Background="#2E2E2E"
+                    Margin="0,-13,0,0"/>
+                <ToggleButton Width="30"
+                          Height="30"
+                          Background="#2E2E2E"
+                          Style="{StaticResource TransitButton}"
+                          Margin="0,-13,0,0"
+                          Command="{Binding DataContext.getRatioViewModel, RelativeSource={RelativeSource AncestorType=Window}}"
+                          ToolTip="Select ratio"/>
+            </StackPanel>
+
+        </DockPanel>
+ 
+
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+
+            <ToggleButton Width="40"
+                          Height="40"
+                          VerticalAlignment="Center"
+                          HorizontalAlignment="Left"
+                          Margin="150,0,0,0"
+                          BorderThickness="0"
+                          Style="{StaticResource DialogTheme}"
+                          x:Name="OpenDialogButton"
+                          Click="OpenDialogButton_Click">
+                <ToggleButton.Background>
+                    <LinearGradientBrush StartPoint="0,0"
+                                         EndPoint="2,0">
+                        <GradientStop Color="#2E2E2E" Offset="0.0"/>
+                        <GradientStop Color="#2E4E2E" Offset="1"/>
+                    </LinearGradientBrush>
+                </ToggleButton.Background>
+
+                <ToggleButton.Clip>
+                    <RectangleGeometry RadiusX="5"
+                                       RadiusY="5"
+                                       Rect="0,0,40,40"/>
+                </ToggleButton.Clip>
+                
+            </ToggleButton>
+
+            <TextBox Width="450"
+                     Height="40"
+                     VerticalAlignment="Center"
+                     HorizontalAlignment="Center"
+                     Margin="0,0,0,0"
+                     Grid.Column="1"
+                     Style="{StaticResource ModernTextBox}"
+                     x:Name="TextBoxDialog"
+                     KeyDown="TextBoxDialog_KeyDown"
+                     ToolTip="Нажмите Enter, чтобы ввести путь к файлу">
+                <TextBox.InputBindings>
+                    <KeyBinding Command="{Binding DataContext.getDataExcelViewModel, RelativeSource={RelativeSource AncestorType=Window}}" Key="K"/>
+                </TextBox.InputBindings>
+            </TextBox>
+
+            <ToggleButton HorizontalAlignment="Right"
+                          VerticalAlignment="Center"
+                          Width="70"
+                          Height="40"
+                          Margin="5,0,0,0"
+                          Content="Ввод"
+                          FontSize="16"
+                          Style="{StaticResource CoolButton}"
+                          Foreground="White"
+                          x:Name="InputButton"
+                          Click="InputButton_Click">
+                <ToggleButton.Background>
+                    <LinearGradientBrush StartPoint="0,0"
+                                         EndPoint="1,0">
+                        <GradientStop Color="#2E4E2E" Offset="0.0"/>
+                        <GradientStop Color="#2E2E2E" Offset="1"/>
+                    </LinearGradientBrush>
+                </ToggleButton.Background>
+
+                <ToggleButton.Clip>
+                    <RectangleGeometry RadiusX="5"
+                                       RadiusY="5"
+                                       Rect="0,0,70,40"/>
+                </ToggleButton.Clip>
+            </ToggleButton>
+        </StackPanel>
+        
+    </StackPanel>
+</UserControl>

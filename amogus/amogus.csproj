@@ -1,0 +1,41 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net6.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Theme\**" />
+    <EmbeddedResource Remove="Theme\**" />
+    <None Remove="Theme\**" />
+    <Page Remove="Theme\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="Images\ExcelLogo.png" />
+    <None Remove="Images\GerberLogo.png" />
+    <None Remove="Images\menu.png" />
+    <None Remove="Images\OpenDialog.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Fonts\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="ClosedXML" Version="0.95.4" />
+    <PackageReference Include="ExcelDataReader" Version="3.6.0" />
+    <PackageReference Include="ExcelDataReader.DataSet" Version="3.6.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Images\ExcelLogo.png" />
+    <Resource Include="Images\GerberLogo.png" />
+    <Resource Include="Images\Menu.png" />
+    <Resource Include="Images\OpenDialog.png" />
+  </ItemGroup>
+
+</Project>

@@ -23,17 +23,13 @@ namespace amogus.MVVM.Model
             Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
 
             var extension = fileNames.Substring(fileNames.LastIndexOf('.'));
-            // Создаем поток для чтения.
             FileStream stream = File.Open(fileNames, FileMode.Open, FileAccess.Read);
-            // В зависимости от расширения файла Excel, создаем тот или иной читатель.
-            // Читатель для файлов с расширением *.xlsx.
+            
             if (extension == ".xlsx")
                 edr = ExcelReaderFactory.CreateOpenXmlReader(stream);
-            // Читатель для файлов с расширением *.xls.
             else if (extension == ".xls")
                 edr = ExcelReaderFactory.CreateBinaryReader(stream);
 
-            //// reader.IsFirstRowAsColumnNames
             var conf = new ExcelDataSetConfiguration
             {
                 ConfigureDataTable = _ => new ExcelDataTableConfiguration
@@ -42,11 +38,9 @@ namespace amogus.MVVM.Model
                     UseHeaderRow = true
                 }
             };
-            // Читаем, получаем DataView и работаем с ним как обычно.
             DataSet dataSet = edr.AsDataSet(conf);
             DataView dtView = dataSet.Tables[0].AsDataView();
 
-            // После завершения чтения освобождаем ресурсы.
             edr.Close();
             return dtView;
         }
